@@ -1,0 +1,112 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{cite}
+
+
+
+\title{SOEN 6011 DELIVERABLE ONE}
+\author{Qing Li}
+\date{Student id: 40082701}
+
+\begin{document}
+
+\maketitle
+
+
+% Problem One
+\section{Function Description}\\
+
+ \begin{equation}
+    F2:  \tan{x}=\frac{opposite}{adjacent}
+  \end{equation}
+
+Domain: all real numbers except the values $ \frac{\pi}{2} + \pi k $ for all integers k \\
+
+Co-domain: all real numbers R.\\
+
+Characteristic:\\
+
+-Period = \pi\\ 
+
+-X intercepts: x = $k\pi$ , where k is an integer.\\ 
+
+-Y intercepts: y = 0 \\
+
+-Symmetry: since tan(-x) = - tan(x) then tan (x) is an odd function and its graph is symmetric with respect the origin. \\
+
+-Intervals of increase/decrease: over one period and from $-\frac{\pi}{2}$ to $\frac{\pi}{2}$, tan (x) is increasing.\\
+
+-Vertical asymptotes: x = $\frac{\pi}{2}$ + $k\pi$, where k is an integer. \\
+
+
+
+% Problem One
+\section{Function Requirements}\\
+
+
+
+
+
+\begin{enumerate}
+\item 	The input X shall be a real number.\\
+ -Type attribute: Design Constraints\\
+ -Priority: High\\
+
+\item 	The calculation result shall be a real number.\\
+ -Type attribute: Design Constraints\\
+ -Priority: High\\
+
+\item	The user shall input a real number X into the user interface.\\	
+-Type attribute: Functional\\
+-Priority: High\\
+
+
+\item	Non-real number input shall be detected by the user interface.\\
+-Type attribute: Functional\\
+-Priority: High\\
+
+\item	Empty input shall be detected by the user interface.\\
+-Type attribute: Functional\\
+-Priority: High\\
+
+\item	When error inputs are detected, the user interface shall report error messages to users.\\
+-Type attribute: Functional\\
+-Priority: High\\
+
+\item	When the user interface receives an approval input X, the user interface shall pass this value X to the function to do the calculation.\\
+-Type attribute: Functional\\
+-Priority: High\\
+
+\item	When the function receives a real number X through the user interface, the function shall calculate the result of tan(X).\\
+-Type attribute: Functional\\
+-Priority: High\\
+
+\item	When calculation is finished, the result of calculation shall be returned to the user interface.	\\
+-Type attribute: Functional\\
+-Priority: High\\
+
+\item	When a calculation result tan(X) is returned to the user interface, the user interface shall show the result to the user.\\
+-Type attribute: Functional\\
+-Priority: High\\
+
+\item	The calculation result shall be accurate to 6 decimal places.\\
+-Type attribute: Performance\\
+-Priority: High\\
+
+\item	Performance:
+After inputting X, user should receive the calculation result from the function within 20 seconds.\\
+-Type attribute: Non-Functional\\
+-Priority: Medium\\
+
+\item	Reusability:
+The function tan(X) may be composited with other scientific calculation functions to form a scientific calculator.\\
+-Type attribute: Non-Functional(assumption)\\
+-Priority: Low\\
+
+\item	Reliability:
+The function shall return the correct result for any approval input X.\\	-Type attribute: Non-Functional\\
+-Priority: High\\
+
+\end{enumerate}
+
+\end{document}
