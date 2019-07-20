@@ -1,0 +1,298 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{caption2}
+\usepackage{subfigure}
+\usepackage[utf8]{inputenc}
+\usepackage{cite}
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+\usepackage[noend]{algorithmic}
+
+\newcommand{\TITLE}[1]{\item[#1]}
+\renewcommand{\algorithmiccomment}[1]{$/\!/$ \parbox[t]{4.5cm}{\raggedright #1}}
+% ugly hack for for/while
+\newbox\fixbox
+\renewcommand{\algorithmicdo}{\setbox\fixbox\hbox{\ {} }\hskip-\wd\fixbox}
+% end of hack
+
+
+
+\title{SOEN 6011 DELIVERABLE ONE}
+\author{Qing Li}
+\date{Student id: 40082701}
+
+\begin{document}
+
+\maketitle
+
+
+% Problem One
+\section{Function Description}
+\begin{equation}
+    F2:  \tan{x}=\frac{opposite}{adjacent}
+\end{equation}
+  
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.3]{tan.png}
+\caption{Tangent Function.  (Source: Google Images)}
+\label{fig:label}
+\end{figure}
+
+Domain: all real numbers except the values $ \frac{\pi}{2} + \pi k $ for all integers k \\
+
+Co-domain: all real numbers R.\\
+
+Characteristic:\\
+
+-Period = $\pi$\\ 
+
+-X intercepts: x = $k\pi$ , where k is an integer.\\ 
+
+-Y intercepts: y = 0 \\
+
+-Symmetry: since tan(-x) = - tan(x) then tan (x) is an odd function and its graph is symmetric with respect the origin. \\
+
+-Intervals of increase/decrease: over one period and from $-\frac{\pi}{2}$ to $\frac{\pi}{2}$, tan (x) is increasing.\\
+
+-Vertical asymptotes: x = $\frac{\pi}{2}$ + $k\pi$, where k is an integer. \\
+
+
+
+% Problem Two
+\section{Function Requirements}
+
+\begin{enumerate}
+\item 	The input X shall be a real number.\\
+ -Type attribute: Design Constraints\\
+ -Priority: High\\
+
+\item 	The calculation result shall be a real number.\\
+ -Type attribute: Design Constraints\\
+ -Priority: High\\
+
+\item	The user shall input a real number X into the user interface.\\	
+-Type attribute: Functional\\
+-Priority: High\\
+
+
+\item	Non-real number input shall be detected by the user interface.\\
+-Type attribute: Functional\\
+-Priority: High\\
+
+\item	Empty input shall be detected by the user interface.\\
+-Type attribute: Functional\\
+-Priority: High\\
+
+\item	When error inputs are detected, the user interface shall report error messages to users.\\
+-Type attribute: Functional\\
+-Priority: High\\
+
+\item	When the user interface receives an approval input X, the user interface shall pass this value X to the function to do the calculation.\\
+-Type attribute: Functional\\
+-Priority: High\\
+
+\item	When the function receives a real number X through the user interface, the function shall calculate the result of tan(X).\\
+-Type attribute: Functional\\
+-Priority: High\\
+
+\item	When calculation is finished, the result of calculation shall be returned to the user interface.	\\
+-Type attribute: Functional\\
+-Priority: High\\
+
+\item	When a calculation result tan(X) is returned to the user interface, the user interface shall show the result to the user.\\
+-Type attribute: Functional\\
+-Priority: High\\
+
+\item	The calculation result shall be accurate to 6 decimal places.\\
+-Type attribute: Performance\\
+-Priority: High\\
+
+\item	Performance:
+After inputting X, user should receive the calculation result from the function within 20 seconds.\\
+-Type attribute: Non-Functional\\
+-Priority: Medium\\
+
+\item	Reusability:
+The function tan(X) may be composited with other scientific calculation functions to form a scientific calculator.\\
+-Type attribute: Non-Functional(assumption)\\
+-Priority: Low\\
+
+\item	Reliability:
+The function shall return the correct result for any approval input X.\\	-Type attribute: Non-Functional\\
+-Priority: High\\
+
+\end{enumerate}
+
+
+% Problem Three
+\section{Function Algorithms}
+
+
+[Pseudocode Format]\\
+
+
+The pseudocode format used by our team refers pseudocode format of CLRS.\\
+
+
+[Algorithm selection]\\
+
+
+I select two algorithms for implementation of my function tan(x):\\
+\begin{enumerate}
+\item  Calculating tan(x)=sin(x)/cos(x) based on iteration.\\
+
+\item  Calculating tan(x) by using Taylor series based on recursion.
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.8]{Taylorseries.JPG}
+\label{fig:label}
+\end{figure}
+\end{enumerate}\\
+
+
+[Algorithm 1]\\
+
+
+Description:\\
+
+
+Calculating the value of tan(x) by using function tan(x)=sin(x)/cos(x), and for sin(x) and cos(x), I use The Maclaurin series to calculate each of them.The subordinate functions are the power function and the factorial function.The whole algorithm is coded based on iteration. \\
+
+Pseudocode:\\
+
+
+\begin{algorithmic}[1]
+  \TITLE{\textsc{tan}$(x)$}
+  \FOR{$k=1$ \TO $24$}
+  \STATE $i=2*k-1$
+  \STATE $j=2*k-2$
+  \STATE $s=cons*pwr(x,i)/fac(i)$
+  \STATE $c=cons*pwr(x,j)/fac(j)$
+  \STATE $sin=sin+s$
+  \STATE $cos=cos+c$
+  \ENDFOR
+  \STATE {end for}
+  \STATE $tan=sin/cos$
+\end{algorithmic}
+
+\begin{algorithmic}[1] 
+  \TITLE{\textsc{pwr}$(x,n)$}
+  \IF{n=0 then}
+  \STATE {Return 1}
+  \ENDIF
+  \STATE {end if}
+  \FOR{$i=1$ \TO $n$}
+  \STATE $power=power*x$
+  \ENDFOR
+  \STATE {end for}
+  \STATE {return $power$}
+\end{algorithmic}
+
+\begin{algorithmic}[1] 
+  \TITLE{\textsc{fac}$(n)$}
+  \IF{$n=0$ \OR $n=1$ then}
+  \STATE {return 1}
+  \ENDIF
+  \STATE {end if}
+  \FOR{$i=2$ \TO $n$}
+  \STATE $pdt=pdt*i$
+  \ENDFOR
+  \STATE {end for}
+  \STATE {return $pdt$}
+\end{algorithmic}
+
+
+Technical reasons\\
+
+
+Time complexity: O($n^{2}$)\\
+
+
+Advantages:\\
+\begin{enumerate}
+\item By using iteration, you could just have a single set of local variables, this saves the time and memory that would be used for passing these things in the recursive calls.
+\item Iterative functions are typically faster than their recursive counterparts.\\
+\end{enumerate}
+
+
+Disadvantages:\\
+
+Iteration is more difficult to understand in some algorithms. Because the code using iteration doesn't have a good readability and understandability.\\
+
+
+[Algorithm 2]\\
+
+
+Description:\\
+
+
+Calculating the value of tan(x) by using Taylor series  directly.The subordinate functions are the power function, the factorial function and the Bernoulli function.The whole algorithm is coded based on recursion. \\
+
+Pseudocode:\\
+\begin{algorithmic}[1]
+  \TITLE{\textsc{tan}$(x)$}
+  \FOR{$i=1$ \TO $24$}
+  \STATE $e=1.0*(pwr(-1,i-1)*pwr(2,2*i)*(pwr(2,2*i)-1.0)*Bernoulli(2*i)*pwr(x,2*i-1))/fac(2*i)$
+  \STATE $sum=sum+e$
+  \ENDFOR
+  \STATE {end for}
+\end{algorithmic}
+
+\begin{algorithmic}[1] 
+  \TITLE{\textsc{pwr}$(x,n)$}
+  \IF{n=0 then}
+  \STATE {return 1}
+  \ELSE
+  \STATE {return $x*pwr(x,n-1)$}
+  \ENDIF
+  \STATE {end if}
+\end{algorithmic}
+
+\begin{algorithmic}[1] 
+  \TITLE{\textsc{fac}$(n)$}
+  \IF{$n=0$ \OR $n=1$ then}
+  \STATE {return 1}
+  \ELSE
+  \STATE {return $n*fac(n-1)$}
+  \ENDIF
+  \STATE {end if}
+\end{algorithmic}
+
+\begin{algorithmic}[1] 
+  \TITLE{\textsc{Bernoulli}$(n)$}
+  \IF{$n=1$ then}
+  \STATE {return 1}
+  \ELSE
+  \WHILE{$k$}
+  \STATE $k=k-1$
+  \STATE $B=B+ -1.0*(fac(n)*Bernoulli(k))/(fac(n-k)*fac(k)*(x-k+1))$
+  \ENDWHILE
+  \STATE {end while}
+  \ENDIF
+  \STATE {end if}
+\end{algorithmic}
+
+
+Technical reasons:\\
+
+
+Time complexity: O($n^{2}$)\\
+
+
+Advantages:\\
+\begin{enumerate}
+\item Code using recursion is usually simplicity and readability.
+\item Using recursion, the length of the program can be reduced.\\
+\end{enumerate}
+
+
+Disadvantages:\\
+\begin{enumerate}
+\item It requires extra storage space. The recursive calls and automatic variables are stored on the stack. For every recursive calls separate memory is allocated to automatic variables with the same name.
+\item Often the algorithm may require large amounts of memory if the depth of the recursion is very large. If the programmer forgets to specify the exit condition in the recursive function, the program will execute out of memory.
+\item The recursion function is not efficient in execution speed and time.\\
+\end{enumerate}
+
+
+\end{document}
