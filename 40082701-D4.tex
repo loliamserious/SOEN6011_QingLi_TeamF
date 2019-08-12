@@ -1,0 +1,118 @@
+\documentclass[20pt,margin=1in,innermargin=-3.9in,blockverticalspace=-0.25in]{tikzposter}
+\geometry{paperwidth=40in,paperheight=30in}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{adjustbox}
+\usepackage{enumitem}
+\usepackage[backend=biber,style=numeric]{biblatex}
+\usepackage{emory-theme}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{mwe} % for placeholder images
+
+\addbibresource{refs.bib}
+
+% set theme parameters
+\tikzposterlatexaffectionproofoff
+\usetheme{EmoryTheme}
+\usecolorstyle{EmoryStyle}
+
+\title{SOEN 6011 DELIVERABLE FOUR}
+\author{QING LI   40082701\\
+Github: \url{https://github.com/loliamserious/SOEN6011_QingLi_TeamF1}\\}
+\titlegraphic{\includegraphics[width=0.3\textwidth]{ConcordiaUniversity.jpg}}
+
+
+% begin document
+\begin{document}
+\maketitle
+\centering
+\begin{columns}
+    \column{0.32}
+    \block{What I did?-Function 2}{
+ \textbf{\Large 
+ I programmed a calculator for the tan(x) function in Java.\\
+ 
+ 
+ IDE: Eclipse\\}}
+ 
+\block{Critical Decision-1 }{\Large
+Our team decided to use the pseudocode format of CLRS.\\
+
+Why critical?\\
+-Unified pseudocode format in a team can improve the readability and understandability of our pseudocode, which means it can facilitates communication between team member.\\}
+\block{Critical Decision-2 }{\Large
+Algorithm selection\\
+
+Why critical?\\
+At first, I proposed two solutions for implementation of my function tan(x):\\
+(1)Calculating tan(x)=sin(x)/cos(x) based on iteration.\\
+(2)Calculating tan(x) by using Taylor series based on recursion.\\
+Finally, I decided to use the first solution, because (1)by using iteration, you could just have a single set of local variables, this saves the time and memory that would be used for passing these things in the recursive calls (2) Iterative functions are typically faster than their recursive counterparts.\\}
+\block{Critical Decision-3 }{\Large
+Our team decided to use the Google Checkstyle.\\
+
+Why critical?\\
+Because it has several advantages:\\
+(1)It is portable between IDEs. If you decide to use IntelliJ later, or you have a team using a variety of IDEs, you still have a way to enforce consistency.\\
+(2)It's much easier to integrate checkstyle with your external tools since it was really designed as a standalone framework.\\
+}
+
+    \column{0.34}
+ \block{Critical Decision-4 }{\Large
+I decided to design a GUI for my program\\
+
+Why critical?\\
+Because GUI is relatively easier to use compared with the TUI.\\
+Based on THE TESLER’S LAW OF THE CONSERVATION OF COMPLEXITY, I design a relatively simple interface for user to use, all the complexity are masked for users. My user interface only contains two buttons and one textbox.\\
+Based on THE PRINCIPLE OF FEATURE EXPOSURE, I attempt to let the user see clearly what functions are available. In my case, user can be informed clearly that the only function of this calculator is calculating the tan(x) when noticing the only red button "tan".\\
+\begin{tikzfigure}
+   \includegraphics[width=0.3\textwidth]{interface.JPG}
+\end{tikzfigure}}
+ \block{Critical Decision-5 }{\Large
+ I decided to use a code review tool.\\
+ 
+Why critical?\\
+-If all the code review had done by manual method, it would be time-consuming and tedium. Code review tool is time-saving and make my work more efficient.\\}
+\block{Lessons Learnt}{
+     \Large
+     
+    1. "result.equals("Error: Empty input!")"\\
+    It is better not to compare the error message string. A regex, "Error:$.*+$" can be used to match the error message.\\
+    
+    2. The public static pwr$()$ method should not be exposed, it can be a private non-static method.\\
+    
+    3. PI can be a final static class member instead of a final member.\\
+    
+    4. "line.charAt(n) <48 || line.charAt(n) > 57"\\
+    "line.charAt(n) < '0' || line.charAt(n) > '9' "can be used for better readability.}
+
+    \column{0.32}
+    \block{Error Handling And Outputs}{
+        \begin{tikzfigure}
+            \includegraphics[width=0.9\linewidth]{output1.JPG}
+        \end{tikzfigure}
+        \begin{tikzfigure}
+            \includegraphics[width=0.9\linewidth]{output2.JPG}
+        \end{tikzfigure}
+        \begin{tikzfigure}
+            \includegraphics[width=0.9\linewidth]{output3.JPG}
+        \end{tikzfigure}
+        \begin{tikzfigure}
+            \includegraphics[width=0.9\linewidth]{output4.JPG}
+        \end{tikzfigure}
+        \begin{tikzfigure}
+            \includegraphics[width=0.9\linewidth]{output5.JPG}
+        \end{tikzfigure}
+        \begin{tikzfigure}
+            \includegraphics[width=0.9\linewidth]{output6.JPG}
+        \end{tikzfigure}
+    }
+
+\end{columns}
+\end{document}
